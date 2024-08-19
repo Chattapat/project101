@@ -1,18 +1,22 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import logo from './logo.svg';  // Ensure TypeScript can handle importing .svg files
+import Navbar from './Navbar';
+import Users from './User';
+import UserCreate from './UserCreate';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import UserUpdate from './UserUpdate';
 
-function MyButton({ title }: { title: string }) {
-  return (
-    <button>{title}</button>
-  );
-}
-
-export default function MyApp() {
+function App() {
   return (
     <div>
-      <h1>Welcome to my app</h1>
-      <MyButton title="Click Me" />
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Users />} />
+        <Route path="create" element={<UserCreate />} />
+        <Route path="update/:id" element={<UserUpdate />} />
+      </Routes>
     </div>
   );
 }
+
+export default App;
